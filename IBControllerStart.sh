@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #   Pass your login credentials as Docker Environment Variables
-#TWSUSERID=
-#TWSPASSWORD=
+#TWS_USERID=
+#TWS_PASSWORD=
 
 #   The folder containing the IBController files:
 IBCDIR=/opt/IBController/
@@ -51,5 +51,5 @@ sleep 1
 pushd $TWSDIR
 # prevent other Java tools interfering with IBController
 unset JAVA_TOOL_OPTIONS
-java -cp  $TWSCP:$IBCDIR/IBController.jar $JAVAOPTS ibcontroller.IBController $IBCINI $TWSUSERID $TWSPASSWORD
+java -cp  $TWSCP:$IBCDIR/IBController.jar $JAVAOPTS ibcontroller.IBController $IBCINI $TWS_USERID $TWS_PASSWORD
 popd
