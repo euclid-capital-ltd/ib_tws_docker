@@ -1,10 +1,17 @@
-tws:
-    build: .
-    environment:
-        TWSUSERID: fdemo
-        TWSPASSWORD: demouser
-        VNC_PASSWORD: donkeyballs
-    ports:
-        - "4001:4001"   # API
-        - "5900:5900"   # VNC
-    restart: always
+version: '3.1'
+services:
+    tws:
+        build:
+            context: .
+            args:
+                - TWS_USERID=${TWS_USERID:-fdemo}
+                - TWS_PASSWORD=${TWS_PASSWORD:-demouser}
+                - VNC_PASSWORD=${VNC_PASSWORD:-donkeyballs}
+        environment:
+            - TWS_USERID=${TWS_USERID:-fdemo}
+            - TWS_PASSWORD=${TWS_PASSWORD:-demouser}
+            - VNC_PASSWORD=${VNC_PASSWORD:-donkeyballs}
+        ports:
+            - "4001:4001"   # API
+            - "5900:5900"   # VNC
+        restart: always
