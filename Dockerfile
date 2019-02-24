@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     xvfb \
     libxrender1 \
     libxtst6 \
-    x11vnc
+    x11vnc \
+	libswt-gtk-3-java
 
 # Download IB Connect and TWS
 RUN cd /tmp && \
@@ -24,7 +25,7 @@ RUN cd /tmp && \
     chmod +x tws-latest-standalone-linux-x64.sh && \
     echo "n" | ./tws-latest-standalone-linux-x64.sh && \
     rm -rf /tmp/* && \
-    mv /root/Jts/954 /opt/IBJts
+    mv /root/Jts/974 /opt/IBJts
 
 # Set up Virtual Framebuffer and VNC
 ADD vnc_init /etc/init.d/vnc
