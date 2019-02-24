@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y \
 
 # Download IB Connect and TWS
 RUN cd /tmp && \
-    wget https://github.com/ib-controller/ib-controller/releases/download/2.14.0/IBController-2.14.0.zip && \
-    unzip IBController-2.14.0.zip -d /opt/IBController && \
+	wget https://github.com/ib-controller/ib-controller/releases/download/3.4.0/IBController-3.4.0.zip && \
+    unzip IBController-3.4.0.zip -d /opt/IBController && \
     wget https://download2.interactivebrokers.com/installers/tws/stable-standalone/tws-stable-standalone-linux-x64.sh && \
     chmod +x tws-stable-standalone-linux-x64.sh && \
     echo "n" | ./tws-stable-standalone-linux-x64.sh && \
@@ -41,10 +41,19 @@ ADD IBController.ini /opt/IBController/
 ADD IBControllerStart.sh /opt/IBController/
 RUN chmod +x /opt/IBController/IBControllerStart.sh
 
-# Set your personal credentials for TWS and VNC (remote desktop)
-ENV TWSUSERID fdemo
-ENV TWSPASSWORD demouser
-ENV VNC_PASSWORD donkeyballs
+# Default credentials for TWS and VNC (remote desktop)
+ARG TWS_USERID=fdemo
+ARG TWS_PASSWORD=demouser
+ARG VNC_PASSWORD=donkeyballs
+
+# Override credentials for TWS and VNC by user supplied environment
+ENV TWS_USERID $TWS_USERID
+ENV TWS_PASSWORD $TWS_PASSWORD
+ENV VNC_PASSWORD $VNC_PASSWORD
+
+RUN echo "TWS_USERID:   $TWS_USERID"
+RUN echo "TWS_PASSWORD: $TWS_PASSWORD"
+RUN echo "VNC_PASSWORD: $VNC_PASSWORD"
 
 # Start TWS
 EXPOSE 4001 5900
