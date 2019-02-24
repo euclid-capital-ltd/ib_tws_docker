@@ -29,7 +29,7 @@ TWSDIR=/opt/IBJts/jars
 #
 #   You must include everything after "-cp " up to the 
 #   first subsequent space character:
-TWSCP=jts.jar:total.jar
+TWSCP=log4j-api-2.5.jar:log4j-core-2.5.jar:twslaunch-974.jar:jts4launch-974.jar:total-2018.jar
 
 
 #   Other Java VM options for TWS. You can find this information in the 
