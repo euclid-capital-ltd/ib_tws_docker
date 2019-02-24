@@ -3,7 +3,7 @@ tws:
     environment:
         TWSUSERID: fdemo
         TWSPASSWORD: demouser
-        VNC_PASSWORD: doughnuts
+        VNC_PASSWORD: donkeyballs
     ports:
         - "4001:4001"   # API
         - "5900:5900"   # VNC
